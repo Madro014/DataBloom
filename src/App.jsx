@@ -428,8 +428,44 @@ function Lesson({ lesson, passed, onPass }) {
   );
 }
 
+function WelcomeScreen({ onStart }) {
+  const [name, setName] = useState("");
+
+  return (
+    <div className="welcome-screen">
+      <div className="welcome-card">
+        <div className="flower">✿</div>
+        <h1>Bienvenida al curso</h1>
+        <p>¡Ánimos de avanzar! Tu talento florecerá aquí.</p>
+        
+        <label>
+          Digita tu nombre:
+          <input 
+            type="text" 
+            maxLength={35}
+            placeholder="Ej. Sofía, Luna..." 
+            value={name} 
+            onChange={e => setName(e.target.value)} 
+            onKeyDown={e => e.key === 'Enter' && name.trim() && onStart(name.trim())}
+            autoFocus
+          />
+        </label>
+
+        <button 
+          className="primary" 
+          disabled={!name.trim()} 
+          onClick={() => onStart(name.trim())}
+        >
+          Empezar a florecer 🌸
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [progress, setProgress] = useState(loadProgress);
+  const [hasStarted, setHasStarted] = useState(!!progress.name);
 
   const [current, setCurrent] = useState(() => {
     const saved = loadProgress();
@@ -560,6 +596,17 @@ export default function App() {
         behavior: "smooth"
       });
     }
+  }
+
+  if (!hasStarted) {
+    return (
+      <WelcomeScreen 
+        onStart={(name) => {
+          setProgress(prev => ({ ...prev, name }));
+          setHasStarted(true);
+        }} 
+      />
+    );
   }
 
   return (
@@ -896,6 +943,7 @@ export default function App() {
                     setProgress(sanitize(null, lessons));
                     setCurrent(lessons[0].id);
                     setResetOpen(false);
+                    setHasStarted(false);
                     setNotice("Tu ruta empieza de nuevo.");
                   }}
                 >
