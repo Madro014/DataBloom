@@ -452,6 +452,26 @@ export const lessons = [
     "Divide el total entre cuatro para obtener el promedio."
   ),
 
+  quiz(
+    "s0",
+    "sql",
+    "¿Qué es una Base de Datos?",
+    [
+      "Imagina el inventario y la agenda de una clínica estética. Si guardas todo en papeles sueltos, encontrar algo será un caos. Una Base de Datos organiza todo en 'Tablas', que son como archiveros exclusivos (uno para Clientas, otro para Tratamientos).",
+      "SQL (Structured Query Language) es el idioma exacto que usas para pedirle a tu asistente (la computadora) que busque información específica en esos archiveros. A esto se le llama hacer una 'consulta' o 'query'."
+    ],
+    "En vez de decir 'búscame los tratamientos de limpieza', le dices en SQL:\nSELECT nombre FROM Tratamientos WHERE tipo = 'Limpieza';",
+    "Si quieres saber qué clientas están registradas en tu clínica, ¿qué concepto usarías para organizar y guardar esa lista inicial?",
+    [
+      "Una Tabla (como un archivero ordenado solo para Clientas).",
+      "Un Ciclo for (para repetir el nombre de las clientas).",
+      "Una Variable de texto (str)."
+    ],
+    0,
+    "¡Exacto! En bases de datos, agrupamos la información de la misma categoría (como clientas, citas o productos) dentro de Tablas.",
+    "Piensa en el archivero grande donde guardas fichas del mismo tipo."
+  ),
+
   practice(
     "s1",
     "sql",
