@@ -64,6 +64,7 @@ INSERT INTO ventas VALUES
 
 function quiz(
   id,
+  route,
   title,
   theory,
   example,
@@ -75,7 +76,7 @@ function quiz(
 ) {
   return {
     id,
-    route: "logic",
+    route,
     type: "quiz",
     minutes: 8,
     title,
@@ -119,72 +120,97 @@ function practice(
 }
 
 export const lessons = [
+  quiz(
+    "t0",
+    "intro",
+    "¿Qué es programar?",
+    [
+      "Programar es dar instrucciones exactas paso a paso a una máquina. A esta secuencia lógica se le llama algoritmo.",
+      "Imagina una rutina de cuidado facial: el orden importa. Si aplicas crema antes de limpiar, no funcionará. Las máquinas necesitan esa misma precisión."
+    ],
+    "1. Lavar rostro\n2. Aplicar mascarilla\n3. Esperar 15 min\n4. Enjuagar\n5. Aplicar crema",
+    "¿Cuál es el algoritmo correcto para preparar la piel?",
+    [
+      "Aplicar mascarilla → Lavar rostro → Enjuagar mascarilla",
+      "Lavar rostro → Aplicar mascarilla → Esperar 15 min → Enjuagar",
+      "Esperar 15 min → Enjuagar → Lavar rostro → Aplicar mascarilla"
+    ],
+    1,
+    "Primero se debe limpiar el rostro, luego aplicar el producto, dejarlo actuar y finalmente retirarlo. El orden lógico es fundamental.",
+    "Piensa en qué estado debe estar la piel antes de recibir un tratamiento."
+  ),
+
   practice(
     "t1",
     "intro",
-    "¿Qué es Python?",
+    "Tu primera instrucción en Python",
     [
-      "Python es un lenguaje de programación muy popular y fácil de leer. Le damos instrucciones a la computadora escribiendo texto.",
-      "La instrucción print() toma lo que está entre paréntesis y lo muestra en pantalla. Los textos siempre van entre comillas."
+      "En Python, le damos órdenes directas a la computadora. La orden print() le dice a la máquina que muestre un mensaje.",
+      "Los textos siempre deben ir rodeados de comillas. ¡Es como decirle a un asistente exactamente qué decir!"
     ],
-    "print(\"Hola, soy Python\")\n# El símbolo # sirve para dejar comentarios que la computadora ignora.",
-    "Muestra exactamente el texto: Aprendiendo sintaxis",
-    "# Escribe tu primera instrucción abajo:\n",
-    "print(\"Aprendiendo sintaxis\")",
-    "Aprendiendo sintaxis",
-    "Usa print() y asegúrate de poner el texto exactamente igual entre comillas."
+    "print(\"Rutina terminada\")\n# El símbolo # permite escribir comentarios que la máquina ignora.",
+    "Escribe código para que la computadora muestre exactamente el texto: Rostro limpio",
+    "# Escribe tu instrucción abajo:\n",
+    "print(\"Rostro limpio\")",
+    "Rostro limpio",
+    "Usa la función print() y asegúrate de escribir el texto entre comillas tal cual se pide."
   ),
 
   practice(
     "t2",
     "intro",
-    "Tipos de variables",
+    "Guardando datos (Variables)",
     [
-      "Una variable es como una caja que guarda un dato. Hay diferentes tipos: números enteros (int), números con decimales (float), textos (str) y valores verdaderos/falsos (bool).",
-      "Para saber qué tipo de dato hay en una variable, usamos la instrucción type()."
+      "Una variable es como un frasco etiquetado donde guardamos un dato para usarlo después. Existen textos (str), números enteros (int), números decimales (float) y booleanos (bool).",
+      "Para saber qué tipo de dato hay en una variable, usamos la orden type()."
     ],
-    "edad = 25          # Entero (int)\nprecio = 19.99     # Decimal (float)\nnombre = \"Ana\"     # Texto (str)\nactivo = True      # Booleano (bool)\nprint(type(edad))",
-    "Crea una variable llamada 'pi' con el valor 3.14 e imprime su tipo usando print(type(pi)).",
-    "# Crea la variable pi abajo e imprime su tipo\n",
-    "pi = 3.14\nprint(type(pi))",
-    "<class 'float'>",
-    "Recuerda que los decimales usan un punto (.) y no llevan comillas."
+    "pasos = 3                # Entero (int)\nproducto = \"Sérum\"         # Texto (str)\nterminado = True         # Booleano (bool)\nprint(type(producto))",
+    "Crea una variable llamada 'tiempo' con el número entero 15 e imprime su tipo usando print(type(tiempo)).",
+    "# Crea la variable tiempo abajo e imprime su tipo\n",
+    "tiempo = 15\nprint(type(tiempo))",
+    "<class 'int'>",
+    "Recuerda que los números enteros no llevan comillas."
   ),
 
-  practice(
+  quiz(
     "t3",
     "intro",
-    "Sintaxis y sangría",
+    "Errores y Sintaxis",
     [
-      "La sintaxis son las reglas para escribir código correctamente. En Python, las mayúsculas y minúsculas son distintas (Print no es lo mismo que print).",
-      "La sangría (los espacios al inicio de una línea) es obligatoria para agrupar instrucciones. Si no la pones bien, Python te dará un IndentationError."
+      "La máquina es muy estricta. Si te equivocas en una letra, un símbolo o un espacio, no entenderá la instrucción. A esto se le llama error de sintaxis.",
+      "En Python, las mayúsculas y minúsculas son diferentes (Print no es lo mismo que print)."
     ],
-    "if True:\n    print(\"Esta línea tiene 4 espacios (sangría).\")\nprint(\"Esta línea no tiene sangría y está fuera del if.\")",
-    "Arregla el código borrando la sangría incorrecta antes del print para que funcione.",
-    "mensaje = \"Sintaxis correcta\"\n    print(mensaje)",
-    "mensaje = \"Sintaxis correcta\"\nprint(mensaje)",
-    "Sintaxis correcta",
-    "Borra los espacios antes de la palabra print para que quede alineada a la izquierda."
+    "print(\"Aplicar crema) \n# ¡Falta la comilla al final!",
+    "Si le dices a la máquina: print(\"Aplicar crema) (sin la comilla final), ¿qué pasará?",
+    [
+      "Entenderá que es un texto y lo arreglará sola.",
+      "Dará un error de sintaxis porque falta cerrar las comillas.",
+      "Imprimirá el texto pero sin comillas."
+    ],
+    1,
+    "La computadora no adivina tus intenciones. Si la instrucción está incompleta, detendrá el programa y mostrará un error (SyntaxError).",
+    "¿Puede la computadora saber dónde termina el texto si no lo indicas?"
   ),
 
   practice(
     "t4",
     "intro",
-    "¿Qué es un ciclo?",
+    "Automatizando con ciclos",
     [
-      "Un ciclo (o bucle) nos permite repetir una acción varias veces sin tener que escribir el código muchas veces.",
-      "El ciclo 'for' recorre una lista de elementos uno por uno. ¡No olvides los dos puntos (:) al final de la línea del for y la sangría adentro!"
+      "En lugar de escribir la misma orden muchas veces, usamos un ciclo 'for' para que la máquina repita una tarea.",
+      "El ciclo recorre una lista de elementos. ¡No olvides los dos puntos (:) al final y la sangría (espacios) adentro para indicar qué se repite!"
     ],
-    "for numero in [1, 2, 3]:\n    print(\"El número es:\")\n    print(numero)",
-    "Usa un ciclo for para recorrer la lista [10, 20] e imprimir cada valor.",
-    "lista = [10, 20]\n# Escribe el ciclo for abajo:\n",
-    "lista = [10, 20]\nfor valor in lista:\n    print(valor)",
-    "10\n20",
-    "Usa for valor in lista: y luego en la siguiente línea (con sangría) usa print(valor)."
+    "for paso in [\"Limpiar\", \"Tónico\", \"Crema\"]:\n    print(paso)",
+    "Usa un ciclo for para recorrer e imprimir cada elemento de la lista: [\"Exfoliar\", \"Hidratar\", \"Proteger\"]",
+    "rutina = [\"Exfoliar\", \"Hidratar\", \"Proteger\"]\n# Escribe el ciclo for abajo:\n",
+    "rutina = [\"Exfoliar\", \"Hidratar\", \"Proteger\"]\nfor paso in rutina:\n    print(paso)",
+    "Exfoliar\nHidratar\nProteger",
+    "Usa for paso in rutina: y en la siguiente línea (con sangría) usa print(paso)."
   ),
 
   quiz(
     "l1",
+    "logic",
     "Un problema, pequeños pasos",
     [
       "Programar es dar instrucciones precisas para resolver una tarea. Un algoritmo es una secuencia ordenada y finita de pasos.",
@@ -204,6 +230,7 @@ export const lessons = [
 
   quiz(
     "l2",
+    "logic",
     "Variables y tipos de datos",
     [
       "Una variable tiene un nombre y un valor. Piensa en una caja etiquetada: ventas puede guardar una cantidad.",
@@ -223,6 +250,7 @@ export const lessons = [
 
   quiz(
     "l3",
+    "logic",
     "Operadores y comparaciones",
     [
       "Los operadores +, -, * y / sirven para sumar, restar, multiplicar y dividir. Los paréntesis indican qué calcular primero.",
@@ -242,6 +270,7 @@ export const lessons = [
 
   quiz(
     "l4",
+    "logic",
     "Decidir con condiciones",
     [
       "Una condición permite elegir qué hacer. SI la condición se cumple, ejecutas una acción; SI NO, ejecutas otra.",
@@ -261,6 +290,7 @@ export const lessons = [
 
   quiz(
     "l5",
+    "logic",
     "Repetir con un bucle",
     [
       "Un bucle repite instrucciones. Un bucle para recorre elementos; uno mientras continúa mientras se cumple una condición.",
@@ -276,6 +306,7 @@ export const lessons = [
 
   quiz(
     "l6",
+    "logic",
     "Funciones y depuración",
     [
       "Una función reúne instrucciones bajo un nombre. Puede recibir parámetros y devolver un resultado para reutilizar una solución.",
