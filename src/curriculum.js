@@ -1,5 +1,12 @@
 export const routes = [
   {
+    id: "intro",
+    title: "Tutorial Básico",
+    emoji: "🐣",
+    description: "Descubre qué es Python, variables, sintaxis y ciclos.",
+    medal: "Primeros Pasos"
+  },
+  {
     id: "logic",
     title: "Semilla de lógica",
     emoji: "🌱",
@@ -112,6 +119,70 @@ function practice(
 }
 
 export const lessons = [
+  practice(
+    "t1",
+    "intro",
+    "¿Qué es Python?",
+    [
+      "Python es un lenguaje de programación muy popular y fácil de leer. Le damos instrucciones a la computadora escribiendo texto.",
+      "La instrucción print() toma lo que está entre paréntesis y lo muestra en pantalla. Los textos siempre van entre comillas."
+    ],
+    "print(\"Hola, soy Python\")\n# El símbolo # sirve para dejar comentarios que la computadora ignora.",
+    "Muestra exactamente el texto: Aprendiendo sintaxis",
+    "# Escribe tu primera instrucción abajo:\n",
+    "print(\"Aprendiendo sintaxis\")",
+    "Aprendiendo sintaxis",
+    "Usa print() y asegúrate de poner el texto exactamente igual entre comillas."
+  ),
+
+  practice(
+    "t2",
+    "intro",
+    "Tipos de variables",
+    [
+      "Una variable es como una caja que guarda un dato. Hay diferentes tipos: números enteros (int), números con decimales (float), textos (str) y valores verdaderos/falsos (bool).",
+      "Para saber qué tipo de dato hay en una variable, usamos la instrucción type()."
+    ],
+    "edad = 25          # Entero (int)\nprecio = 19.99     # Decimal (float)\nnombre = \"Ana\"     # Texto (str)\nactivo = True      # Booleano (bool)\nprint(type(edad))",
+    "Crea una variable llamada 'pi' con el valor 3.14 e imprime su tipo usando print(type(pi)).",
+    "# Crea la variable pi abajo e imprime su tipo\n",
+    "pi = 3.14\nprint(type(pi))",
+    "<class 'float'>",
+    "Recuerda que los decimales usan un punto (.) y no llevan comillas."
+  ),
+
+  practice(
+    "t3",
+    "intro",
+    "Sintaxis y sangría",
+    [
+      "La sintaxis son las reglas para escribir código correctamente. En Python, las mayúsculas y minúsculas son distintas (Print no es lo mismo que print).",
+      "La sangría (los espacios al inicio de una línea) es obligatoria para agrupar instrucciones. Si no la pones bien, Python te dará un IndentationError."
+    ],
+    "if True:\n    print(\"Esta línea tiene 4 espacios (sangría).\")\nprint(\"Esta línea no tiene sangría y está fuera del if.\")",
+    "Arregla el código borrando la sangría incorrecta antes del print para que funcione.",
+    "mensaje = \"Sintaxis correcta\"\n    print(mensaje)",
+    "mensaje = \"Sintaxis correcta\"\nprint(mensaje)",
+    "Sintaxis correcta",
+    "Borra los espacios antes de la palabra print para que quede alineada a la izquierda."
+  ),
+
+  practice(
+    "t4",
+    "intro",
+    "¿Qué es un ciclo?",
+    [
+      "Un ciclo (o bucle) nos permite repetir una acción varias veces sin tener que escribir el código muchas veces.",
+      "El ciclo 'for' recorre una lista de elementos uno por uno. ¡No olvides los dos puntos (:) al final de la línea del for y la sangría adentro!"
+    ],
+    "for numero in [1, 2, 3]:\n    print(\"El número es:\")\n    print(numero)",
+    "Usa un ciclo for para recorrer la lista [10, 20] e imprimir cada valor.",
+    "lista = [10, 20]\n# Escribe el ciclo for abajo:\n",
+    "lista = [10, 20]\nfor valor in lista:\n    print(valor)",
+    "10\n20",
+    "Usa for valor in lista: y luego en la siguiente línea (con sangría) usa print(valor)."
+  ),
+
   quiz(
     "l1",
     "Un problema, pequeños pasos",

@@ -90,16 +90,16 @@ test("medallas solo al completar una etapa", () => {
       lessons,
       lessons.map(lesson => lesson.id)
     ).length,
-    4
+    5
   );
 });
 
 test("currículo completo y coherente", () => {
-  assert.equal(lessons.length, 28);
+  assert.equal(lessons.length, 32);
 
   assert.equal(
     new Set(lessons.map(lesson => lesson.id)).size,
-    28
+    32
   );
 
   for (const lesson of lessons) {
